@@ -13,6 +13,7 @@
 		42C453361CF82E8A003908DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C453341CF82E8A003908DC /* Main.storyboard */; };
 		42C453381CF82E8A003908DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C453371CF82E8A003908DC /* Assets.xcassets */; };
 		42C4533B1CF82E8A003908DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C453391CF82E8A003908DC /* LaunchScreen.storyboard */; };
+		42C453451CF82EAE003908DC /* OTRepeatableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C453441CF82EAE003908DC /* OTRepeatableButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		42C453371CF82E8A003908DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42C4533A1CF82E8A003908DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42C4533C1CF82E8A003908DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42C453431CF82EAE003908DC /* OTRepeatableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRepeatableButton.h; sourceTree = "<group>"; };
+		42C453441CF82EAE003908DC /* OTRepeatableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRepeatableButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 		42C4531F1CF82E8A003908DC = {
 			isa = PBXGroup;
 			children = (
+				42C453421CF82E9A003908DC /* OTRepeatableButton */,
 				42C4532A1CF82E8A003908DC /* OTRepeatableButtonDemo */,
 				42C453291CF82E8A003908DC /* Products */,
 			);
@@ -77,6 +81,15 @@
 				42C4532C1CF82E8A003908DC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42C453421CF82E9A003908DC /* OTRepeatableButton */ = {
+			isa = PBXGroup;
+			children = (
+				42C453431CF82EAE003908DC /* OTRepeatableButton.h */,
+				42C453441CF82EAE003908DC /* OTRepeatableButton.m */,
+			);
+			path = OTRepeatableButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +165,7 @@
 				42C453331CF82E8A003908DC /* ViewController.m in Sources */,
 				42C453301CF82E8A003908DC /* AppDelegate.m in Sources */,
 				42C4532D1CF82E8A003908DC /* main.m in Sources */,
+				42C453451CF82EAE003908DC /* OTRepeatableButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
