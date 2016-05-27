@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "OTRepeatableButton.h"
 
 @interface ViewController ()
 
@@ -14,9 +15,19 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    OTRepeatableButton *button = [[OTRepeatableButton alloc] initWithFrame:CGRectMake(100, 100, 200, 100)];
+    [button setTitle:@"Touch and hold" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    __weak typeof(button) weakButton;
+    button.action = ^{
+        NSLog(@"Actived! %tu", weakButton.currentRepeatCount);
+    };
+    [self.view addSubview:button];
 }
 
 - (void)didReceiveMemoryWarning {

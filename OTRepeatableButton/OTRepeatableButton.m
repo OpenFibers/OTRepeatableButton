@@ -19,9 +19,19 @@
     if (self)
     {
         _innerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_innerButton addTarget:self action:@selector(buttonTouchedDown) forControlEvents:UIControlEventTouchDown];
+        [_innerButton addTarget:self action:@selector(buttonTouchedUp) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel];
         [self addSubview:_innerButton];
+        
+        self.repeatDelay = 3;
+        self.repeatInterval = 0.2;
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [self cancelNextAction];
 }
 
 - (void)layoutSubviews
@@ -29,6 +39,45 @@
     [super layoutSubviews];
     _innerButton.frame = self.bounds;
 }
+
+#pragma mark - Button events
+
+- (void)buttonTouchedDown
+{
+    _currentRepeatCount = 0;
+    [self triggerAction];
+    [self performSelector:@selector(triggerActionAndBeginRepeat) withObject:nil afterDelay:self.repeatDelay];
+}
+
+- (void)buttonTouchedUp
+{
+    [self cancelNextAction];
+}
+
+#pragma mark - Action methods
+
+- (void)cancelNextAction
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(triggerActionAndBeginRepeat) object:nil];
+}
+
+- (void)triggerAction
+{
+    _currentRepeatCount ++;
+    NSLog(@"%tu", _currentRepeatCount);
+    if (self.action)
+    {
+        self.action();
+    }
+}
+
+- (void)triggerActionAndBeginRepeat
+{
+    [self triggerAction];
+    [self performSelector:@selector(triggerActionAndBeginRepeat) withObject:nil afterDelay:self.repeatInterval];
+}
+
+#pragma mark - UIButton methods
 
 - (void)setImage:(nullable UIImage *)image forState:(UIControlState)state
 {

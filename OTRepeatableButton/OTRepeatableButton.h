@@ -13,6 +13,9 @@
 - (nonnull instancetype)initWithFrame:(CGRect)frame;
 
 @property (nonatomic, copy, nullable) void (^action)(void);
+@property (nonatomic, assign) NSTimeInterval repeatDelay;
+@property (nonatomic, assign) NSTimeInterval repeatInterval;
+@property (nonatomic, readonly) NSUInteger currentRepeatCount;
 
 - (void)setImage:(nullable UIImage *)image forState:(UIControlState)state;
 - (void)setBackgroundImage:(nullable UIImage *)image forState:(UIControlState)state;
