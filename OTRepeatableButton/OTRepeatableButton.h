@@ -13,8 +13,18 @@
 - (nonnull instancetype)initWithFrame:(CGRect)frame;
 
 @property (nonatomic, copy, nullable) void (^action)(void);
+@property (nonatomic, copy, nullable) void (^repeatEndedAction)(void);
+
+/**
+ *  Delay before repeat, default is 1
+ */
 @property (nonatomic, assign) NSTimeInterval repeatDelay;
+
+/**
+ *  Repeat interval
+ */
 @property (nonatomic, assign) NSTimeInterval repeatInterval;
+
 @property (nonatomic, readonly) NSUInteger currentRepeatCount;
 
 - (void)setImage:(nullable UIImage *)image forState:(UIControlState)state;

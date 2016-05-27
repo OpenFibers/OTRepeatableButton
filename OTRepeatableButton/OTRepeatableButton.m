@@ -23,7 +23,7 @@
         [_innerButton addTarget:self action:@selector(buttonTouchedUp) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel];
         [self addSubview:_innerButton];
         
-        self.repeatDelay = 3;
+        self.repeatDelay = 1;
         self.repeatInterval = 0.2;
     }
     return self;
@@ -51,6 +51,10 @@
 
 - (void)buttonTouchedUp
 {
+    if (self.repeatEndedAction)
+    {
+        self.repeatEndedAction();
+    }
     [self cancelNextAction];
 }
 
@@ -64,7 +68,6 @@
 - (void)triggerAction
 {
     _currentRepeatCount ++;
-    NSLog(@"%tu", _currentRepeatCount);
     if (self.action)
     {
         self.action();

@@ -23,9 +23,14 @@
     [button setTitle:@"Touch and hold" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-    __weak typeof(button) weakButton;
+    NSTimeInterval defaultRepeatInterval = button.repeatInterval;
+    __weak typeof(button) weakButton = button;
     button.action = ^{
         NSLog(@"Actived! %tu", weakButton.currentRepeatCount);
+        weakButton.repeatInterval = defaultRepeatInterval / (1 + weakButton.currentRepeatCount / 10);
+    };
+    button.repeatEndedAction = ^{
+        NSLog(@"Repeat ended");
     };
     [self.view addSubview:button];
 }
